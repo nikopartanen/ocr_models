@@ -1,0 +1,19 @@
+#!/bin/sh
+
+text2image --text=kpv_izva_evv_training.txt --outputbase=evv_izva.UbuntuLightItalic.exp0 --font='Ubuntu Light Italic' --fonts_dir=/usr/share/fonts/
+
+tesseract evv_izva.UbuntuLightItalic.exp0.tif evv_izva.UbuntuLightItalic.exp0 box.train
+
+unicharset_extractor evv_izva.UbuntuLightItalic.exp0.box
+
+echo "ubuntulightitalic 1 0 0 0 0 0" > font_properties
+
+shapeclustering -F font_properties -U unicharset evv_izva.UbuntuLightItalic.exp0.tr
+
+mftraining -F font_properties -U unicharset -O evv.unicharset evv.UbuntuLightItalic.exp0.tr
+
+cntraining evv_izva.UbuntuLightItalic.exp0.tr
+
+Rename everything to evv_izva.
+
+combine_tessdata evv_izva.
