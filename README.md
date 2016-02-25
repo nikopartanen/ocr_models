@@ -98,7 +98,7 @@ Forward. This trains the model from the boxfile.
 
 Seems to work...  It gave some failure, but did generate the .tr file.
 
-### Computing the character set
+### Extracting the character set
 
     unicharset_extractor evv.UbuntuLightItalic.exp0.box
     
